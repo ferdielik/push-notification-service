@@ -54,6 +54,24 @@ public final class ApsPayloadBuilder
         return this;
     }
 
+    public ApsPayloadBuilder category(String category)
+    {
+        this.aps.put("category", category);
+        return this;
+    }
+
+    public ApsPayloadBuilder contentAvailable(boolean available)
+    {
+        this.aps.put("content-available", available ? 1 : 0);
+        return this;
+    }
+
+    public ApsPayloadBuilder mutableContent(boolean available)
+    {
+        this.aps.put("mutable-content", available ? 1 : 0);
+        return this;
+    }
+
     public ApsPayloadBuilder badge(int badge)
     {
         this.aps.put("badge", badge);
