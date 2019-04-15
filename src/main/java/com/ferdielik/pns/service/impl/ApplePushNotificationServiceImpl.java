@@ -11,8 +11,8 @@ import com.notnoop.apns.ApnsServiceBuilder;
 
 public class ApplePushNotificationServiceImpl implements NotificationService
 {
-    private static final String APS_CERT_FILE = "cert.p12";
-    private static final String APS_CERT_PASSWORD = "klar21Renz";
+    private static final String APS_CERT_FILE = "";
+    private static final String APS_CERT_PASSWORD = "";
 
     private ApnsService apnsService;
 
@@ -64,6 +64,11 @@ public class ApplePushNotificationServiceImpl implements NotificationService
         if (notification.getCategory() != null)
         {
             payloadBuilder.customField("category", notification.getCategory().getIdentifier());
+        }
+
+        if (notification.hasCustomData())
+        {
+            payloadBuilder.customFields(notification.getCustomData());
         }
 
         apnsService.push(deviceToken, payloadBuilder.build());
